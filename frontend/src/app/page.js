@@ -2,22 +2,42 @@
 
 import { useState } from 'react';
 import TodoForm from '../components/TodoForm';
+import TodoList from '../components/TodoList';
 
 export default function Home() {
-  const [todos, setTodos] = useState([]);
+  const [todos, setTodos] = useState([
+    { id: 1, title: 'Groceries', description: 'Veggies, Milk, Tea, Coffee, Bread', completed: false }
+  ]);
 
-  // Temporary handler
   const handleCreate = (title, description) => {
-    console.log('Creating todo:', { title, description });
+    const newTodo = {
+      id: Date.now(),
+      title,
+      description,
+      completed: false
+    };
+    setTodos([newTodo, ...todos]);
   };
-  
+
+  const handleToggleComplete = (id, completed) => {
+    setTodos(todos.map(todo =>
+      todo.id === id ? { ...todo, completed } : todo
+    ));
+  };
+
+  const handleDelete = (id) => {
+    setTodos(todos.filter(todo => todo.id !== id));
+  };
+
   return (
     <div className="container">
       <h1>Todo Tracker</h1>
       <TodoForm onSubmit={handleCreate} />
-      <p style={{ textAlign: 'center', color: '#a0aec0', marginTop: '20px' }}>
-        {todos.length === 0 ? 'No todos yet. Create one above!' : 'Todo list coming soon...'}
-      </p>
+      <TodoList
+        todos={todos}
+        onToggleComplete={handleToggleComplete}
+        onDelete={handleDelete}
+      />
     </div>
   );
 }
