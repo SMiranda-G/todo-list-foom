@@ -57,9 +57,9 @@ export default function Home() {
   };
 
   const completedCount = todos.filter((t) => t.completed).length;
-  useEffect(() => {
-    loadTodos();
-  }, []);
+    useEffect(() => {
+      loadTodos();
+    }, []);
 
   return (
     <div className="container">
