@@ -1,9 +1,9 @@
-require('dotenv').config();
+require("dotenv").config();
 
 module.exports = {
-    development: {
-        dialect: 'sqlite',
-        storage: './database.sqlite',
-        logging: console.log
-    }
+  development: {
+    dialect: "sqlite",
+    storage: "./database.sqlite",
+    logging: console.log,
+  },
 };
