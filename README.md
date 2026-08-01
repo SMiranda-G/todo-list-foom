@@ -1,4 +1,3 @@
-
 # Todo Tracker App
 Todo application consisting of a RESTful Express API backend and a Next.js frontend. The backend manages CRUD operations and persists data using SQLite, while the frontend provides a responsive interface for interacting with todos.
 
